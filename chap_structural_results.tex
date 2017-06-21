@@ -24,8 +24,8 @@ Assume without loss of generality that the circuit $C$ has all gates with fan-in
 For every gate $g\in C$, define $(d+1)$ gates $g^{(0)},\dots, g^{(d)}$; we shall construct a new circuit $C'$ such that $g^{(i)}$ computes the degree $i$ homogeneous component of the polynomial computed at $g$. 
 If $g$ has children $h_1$ and $h_2$, then $C'$ would have the following connections depending on the type of the gate $g$:
 \begin{eqnarray*}
-\text{$g = h_1 + h_2$}\quad\implies\quad g^{(i)} &=& h_1^{(i)} \spaced{+} h_2^{(i)}\quad\text{for all $i$}\\
-\text{$g = h_1 \times h_2$}\quad\implies\quad g^{(i)} &=& \sum_{j=0}^i h_1^{(j)} h_2^{(i-j)}\quad\text{for all $i$}
+\text{$g = h_1 + h_2$}\quad\implies\quad g^{(i)} &=& h_1^{(i)} \spaced{+} h_2^{(i)}\quad\text{for all $i$},\\
+\text{$g = h_1 \times h_2$}\quad\implies\quad g^{(i)} &=& \sum_{j=0}^i h_1^{(j)} h_2^{(i-j)}\quad\text{for all $i$}.
 \end{eqnarray*}
 It is easy to check that the size of the circuit $C'$ is at most $O(sd^2)$, and computes all the homogeneous components of $f$. 
 \end{proof}
@@ -33,8 +33,7 @@ It is easy to check that the size of the circuit $C'$ is at most $O(sd^2)$, and 
 Thus, for arithmetic circuits, we can assume without much loss of generality that we are working with a homogeneous circuit. 
 
 \begin{remark*}
-For the class of arithmetic formulas, it is not clear if we can homogeneous without loss of generality. 
-If we were to apply the above lemma to an arbitrary arithmetic formula, the resulting object is a homogeneous circuit and not a formula. 
+Notice, that if we were to apply the above lemma to an arbitrary arithmetic formula, the resulting object is a homogeneous circuit and not a formula.
 It is unclear if any formula can be homogenized without loss of generality. 
 The same is the case even for circuits of a fixed depth, as the above construction doubles the depth of the circuit. 
 
@@ -62,7 +61,7 @@ Let $P(x_1,\ldots, x_n, y)$ be a polynomial with $\deg_y P \leq d$. For any set 
 Thus in particular, if $P$ is computed by a size $s$ circuit, then each $P_i$ is computable  by a size $s(d+1)$ circuit. Furthermore, if $P$ is computable by a size $s$ circuit from some class $\mathcal{C}$, then each $P_i$ is computable by a size $s(d+1)$ circuit from the class $\Sigma \mathcal{C}$ (which are circuits with a $+$ gate as a root with $\mathcal{C}$-circuits as its children).
 \end{lemma}
 \begin{proof}
-For this proof we shall use $P(\alpha_i)$ as a short-hand for $P(x_1,\ldots, x_n, \alpha_i)$. Then we have the following matrix identity
+For this proof we shall use $P(\alpha_i)$ as a short-hand for $P(x_1,\ldots, x_n, \alpha_i)$. Then we have the following matrix identity:
 \[
 \insquare{\begin{array}{cccc}
 1 & \alpha_0 & \cdots & \alpha_0^d\\
@@ -80,7 +79,7 @@ P(\alpha_0)\\
 P(\alpha_1) \\
 \vdots\\
 P(\alpha_d)
-\end{array}}
+\end{array}}.
 \]
 Observe that the matrix on the left is a Vandermonde matrix, and hence is invertible. This implies that there is some matrix $\inparen{\!\inparen{\beta_{ij}}\!}$, its inverse, such that
 \[
@@ -101,7 +100,7 @@ P(\alpha_0)\\
 P(\alpha_1) \\
 \vdots\\
 P(\alpha_d)
-\end{array}}
+\end{array}}.
 \]
 In particular, for each $i \in \set{0,\ldots, d}$,
 \[
@@ -110,7 +109,7 @@ P_i(x_1,\ldots, x_n) \spaced{=} \beta_0 P(x_1,\ldots, x_n, \alpha_0) + \cdots + 
 The size bounds and structure claimed is clear from the above expression.
 \end{proof}
 
-The use of interpolation is one of the most important methods when dealing with arithmetic circuits. We would many applications of it later in this article. We just give a couple of concrete applications for now. The first is the computation of partial derivatives in a single variable. We leave this as an easy exercise. 
+The use of interpolation is one of the most important methods when dealing with arithmetic circuits. We will see many applications of it later in this article. We just give a couple of concrete applications for now. The first is the computation of partial derivatives in a single variable. We leave this as an easy exercise.
 
 \begin{exercise}[Computing partial derivatives]
 Suppose $P(x_1,\ldots, x_n,y)$ be a polynomial computed by a size $s$ circuit with $\deg_y P \leq d$. Show that for any $i$, the partial derivative
@@ -127,7 +126,7 @@ Another important application is the task of computing homogeneous components.
 Suppose we have a size $s$ circuit $C$ that is computing a polynomial $P$ of degree $d$.
 We have already seen in \autoref{lem:homogenization} that we can construct each of the homogeneous components of $P$ by a circuit $C'$ of size at most $sd^2$.
 Unfortunately, the construction described in \autoref{sec:homogenization} results in a circuit $C'$ even if we started off with a formula computing $P$.
-Furthermore, if $P$ was computable by a constant depth circuit, the construction results in an non-constant depth circuit.
+Furthermore, if $P$ was computable by a constant depth circuit then the construction results in an non-constant depth circuit.
 However, the construction in \autoref{lem:homogenization} not just computes the homogeneous components of $P$ but it computes them via a \emph{homogeneous} circuit. If the goal is to just compute the homogeneous components (by a possibly non-homogeneous circuit), one can use interpolation. Furthermore, this method would preserve constant depth as well.
 
 Let us use $\Hom_i(P)$ to denote the homogeneous part of degree $i$, and let $d = \deg(P)$.
@@ -136,7 +135,7 @@ P(x_1,\ldots, x_n) \spaced{=} \Hom_0(P) + \cdots + \Hom_d(P)
 \]
 Let $y$ be a new variable and consider the polynomial $P'(x_1,\ldots, x_n, y) := P(yx_1, \ldots, y x_n)$. Then observe that
 \[
-P'(x_1,\ldots, x_n) \spaced{=} \Hom_0(P) + y\Hom_1(P) + \cdots + y^d \Hom_d(P).
+P'(x_1,\ldots, x_n,y) \spaced{=} \Hom_0(P) + y\Hom_1(P) + \cdots + y^d \Hom_d(P).
 \]
 In other words, each homogeneous component of $P$ is a coefficient of some $y^i$ of $P'(x_1,\ldots, x_n,y)$. Thus, \autoref{lem:interpolation} tells us that we can use a linear combination of evaluations of $P'$ to compute these coefficients. 
 
@@ -176,7 +175,7 @@ Arithmetic circuits exhibit some remarkable depth reduction results, and we shal
 \subsection{Depth reduction for arithmetic formulas}
 
 The depth reduction for formulas is quite easy to describe. 
-This would also serve as step towards understanding the depth reduction for arithmetic circuits. 
+This will also serve as step towards understanding the depth reduction for arithmetic circuits. 
 The following depth reduction is due to Brent~\cite{brent74}. 
 
 \begin{lemma}[\cite{brent74}]\label{lem:formula-depth-reduction}
@@ -203,7 +202,7 @@ for some polynomials $A$ and $B$.
 But we can compute both $A$ and $B$ from $\hat{\Phi}_v(y)$ as
 \begin{eqnarray*}
 A & = & \hat{\Phi}_v(1) - \hat{\Phi}_v(0)\\
-B & = & \hat{\Phi}_v(0)
+B & = & \hat{\Phi}_v(0).
 \end{eqnarray*}
 Thus, 
 \[
@@ -272,19 +271,19 @@ Thus, by recursively applying this process on each of these sub-formulas, we obt
 The key point in the above depth reduction was that for any node $v$, the formulas $\Phi_v$ and $\hat{\Phi}_v(y)$ were disjoint. 
 This however is not the case for general arithmetic circuits. 
 Thus, it is not clear if we can find a node in the circuit such that the subcircuit under it has size between $s/3$ and $2s/3$. 
-However, we do not really need to make the subcircuits have size drop by a constant factor, but any parameter dropping by a constant factor would be fine. 
-One parameter that we could work with instead is the \emph{degree}. 
+However, we do not really need to make the subcircuits have the size drop by a constant factor. Instead, any parameter
+dropping by a constant factor would be fine, such as the \emph{degree}.
 
 
 \subsubsection{Applying Brent's reduction with degree}
 
-By \autoref{lem:homogenization}, we may assume that we have a homogeneous circuit $\Phi$ if size $s$ computing a homogeneous $n$-variate polynomial $f$ of degree $d$. 
+By \autoref{lem:homogenization}, we may assume that we have a homogeneous circuit $\Phi$ of size $s$ computing a homogeneous $n$-variate polynomial $f$ of degree $d$.
 Using a similar argument as in the proof of \autoref{lem:formula-depth-reduction}, we can find a node $v \in \Phi$ such that $\frac{d}{3} < \deg(v) \leq \frac{2d}{3}$. 
 However, we cannot quite write $f$ as $A \cdot \Phi_v + B$ as we are now dealing with a circuit and there could be multiple paths from the root leading to $v$.
 
 Consider the set of all nodes of such intermediate degree as $\mathcal{F}$:
 \[
-\mathcal{F} = \setdef{v\in \Phi}{\frac{d}{3} < \deg(v)\leq \frac{2d}{3}}
+\mathcal{F} = \setdef{v\in \Phi}{\frac{d}{3} < \deg(v)\leq \frac{2d}{3}}.
 \]
 Instead of expressing $f$ using a single $v\in \mathcal{F}$ as in \autoref{lem:formula-depth-reduction}, we shall express $f$ as a function of \emph{all} nodes in $\mathcal{F}$. 
 
@@ -310,13 +309,13 @@ Since every polynomial appearing in \eqref{eqn:hyafil} is computable by size at 
 Thus,
 \begin{eqnarray*}
 \mathrm{Depth}(d) & = & \mathrm{Depth}(2d/3) \quad + 2\\
-\implies \mathrm{Depth}(d) & = & O(\log d)
+\implies \mathrm{Depth}(d) & = & O(\log d).
 \end{eqnarray*}
 Unfortunately, the size of the resulting circuit could be as large as $s^{O(\log d)}$. 
-This reduction is along the lines of Hyafil~\cite{Hyafil1978}. 
+This depth reduction is along the lines of Hyafil~\cite{Hyafil1978}.
 
 Notice that in this reduction, the final circuit we obtain is in fact an arithmetic formula of size $s^{O(\log d)}$ and depth $O(\log d)$ (assuming that addition gates can have unbounded fan-in; with bounded fan-in addition gates, the depth would be $O(\log d \cdot \log s)$). 
-Valiant, Skyum Berkowitz and Rackoff \cite{vsbr83} showed that we can attain a similar depth reduction to $O(\log d)$ depth while keeping the size polynomial. 
+Valiant, Skyum, Berkowitz and Rackoff \cite{vsbr83} showed that we can attain a similar depth reduction to $O(\log d)$ depth while keeping the size polynomial.
 
 
 \subsubsection{Depth reduction of \cite{vsbr83}}
@@ -329,7 +328,7 @@ This section shall be devoted to the proof of the remarkable theorem of Valiant,
   Let $f$ be an $n$-variate degree $d$ polynomial computed by an
   arithmetic circuit $\Phi$ of size $s$. 
 Then there is an arithmetic
-  circuit $\Phi'$ computing $f$ and has size $s' = \poly(s,n,d)$ and
+  circuit $\Phi'$ computing $f$ with size $s' = \poly(s,n,d)$ and
   depth $O(\log d)$.
 \end{theorem}
 
@@ -339,7 +338,7 @@ We will also assume that all multiplication gates in $\Phi$
 have fan-in at most $2$, and that the degree of the right child of any
 multiplication gate is at least as large as the degree of the its left
 child. 
-Such circuits are known to as \emph{right heavy} circuits. 
+Such circuits are known as \emph{right heavy} circuits.
 For any gate $u$ in $\Phi$, we denote by $[u]$ the polynomial computed at
 gate $u$. 
 It will also denote a gate label in the new depth reduced
@@ -373,10 +372,10 @@ paths from the $u$ to $v$.
 
 A minimal computation in a circuit is formalized by the notion of a \emph{proof-tree}. 
 A proof-tree is a sub-circuit $T$ such that,
-\,1. the root is in $T$.
-\,2. if a multiplication gate $v$ is in $T$, then so are both its children. 
+\,1.\ the root is in $T$.
+\,2.\ if a multiplication gate $v$ is in $T$, then so are both its children.
 And,
-\,3. if an addition gate $v$ is in $T$, then exactly one child of $v$ is also in $T$.
+\,3.\ if an addition gate $v$ is in $T$, then exactly one child of $v$ is also in $T$.
 
 Every proof-tree computes a monomial, and the polynomial computed by
 the circuit is just the sum over all proof-trees. 
