@@ -365,9 +365,8 @@ $\deg(u) - \deg(v)$.
 For an arithmetic formula $\Phi$ with $u$ as root, and any other node
 $v$, we can write $\Phi = [u]$ as $A \cdot [v] + B$ for some
 polynomials $A$ and $B$. 
-We would like to denote $[u:v]$ to denote the
-quotient $A$. 
-In a circuit things get complicated due to multiple
+Let us denote the quotient $A$ by $[u:v]$.
+In a circuit, however, things get complicated due to multiple
 paths from the $u$ to $v$.
 
 A minimal computation in a circuit is formalized by the notion of a \emph{proof-tree}. 
@@ -421,7 +420,7 @@ the lines of \cite{ajmv98} but using the language of \cite{vsbr83}.
 \begin{definition}[Frontier]\label{defn:frontier}
 For any parameter $m$, define the \emph{frontier at degree $m$} as
 \[
-\mathcal{F}_m \quad=\quad \setdef{v}{\deg(v) \geq m\;,\; \deg(v_L), \deg(v_R) < m}
+\mathcal{F}_m \quad=\quad \setdef{v}{\deg(v) \geq m\;,\; \deg(v_L), \deg(v_R) < m}.
 \]
 That is, $\mathcal{F}_m$ are the deepest nodes in the circuit that have degree at least $m$. 
 \end{definition}
@@ -445,19 +444,19 @@ Suppose $\Phi$ is a homogeneous, right-heavy circuit.
 Let $m$ be a parameter such that $\deg(u) \geq m$. 
 Then,
 \begin{equation}\label{eqn:vsbr-for-u}
-[u]\spaced{=} \sum_{w\in \mathcal{F}_m} [u:w] \cdot [w]
+[u]\spaced{=} \sum_{w\in \mathcal{F}_m} [u:w] \cdot [w].
 \end{equation}
 Also, if $u,v$ are nodes such that $\deg(u) \geq m > \deg(v)$, then
 \begin{equation}\label{eqn:vsbr-for-uv}
-[u:v] \spaced{=} \sum_{w\in \mathcal{F}_m} [u:w] [w:v]
+[u:v] \spaced{=} \sum_{w\in \mathcal{F}_m} [u:w] [w:v].
 \end{equation}
 \end{lemma}
 \begin{proof}
-The proof would be by induction on the depth of $u$.\\
+The proof is by induction on the depth of $u$.\\
 
 \noindent
 1. 
-The base case would be when $\deg(u) \geq m$ but all its children have degree less than $m$, that is $u \in \mathcal{F}_m$. 
+The base case occurs when $\deg(u) \geq m$ but all its children have degree less than $m$, that is $u \in \mathcal{F}_m$. 
 Such a node $u$ has to be a $\times$ gate. 
 Hence,
 \begin{eqnarray*}
@@ -481,7 +480,7 @@ and
 \begin{eqnarray*}
   [u:v] &=& [u_1:v] + [u_2:v] \\
   &=& \sum_{w\in \mathcal{F}_m} \inparen{[u_1: w]\cdot [w:v]  + [u_2:w]\cdot [w:v]}\quad\text{(inductive hypothesis)}\\
-  &=& \sum_{w\in \mathcal{F}_m} [u:w] \cdot [w:v] \quad\text{(\autoref{defn:gate-quotient}.3)}
+  &=& \sum_{w\in \mathcal{F}_m} [u:w] \cdot [w:v]. \quad\text{(\autoref{defn:gate-quotient}.3)}
 \end{eqnarray*}
 
 
@@ -493,10 +492,11 @@ If $u = u_1 \times u_2$ with $\deg(u_2) \geq m$,
     &=& [u_1] \cdot \inparen{\sum_{w\in \mathcal{F}_m} [u_2:w]\cdot [w]} \quad\text{(inductive hypothesis)}\\
     &=& \sum_{w\in \mathcal{F}_m}([u_1]\cdot [u_2:w]) \cdot [w] = \sum_{w\in \mathcal{F}_m}[u:w] \cdot [w]\quad\text{(\autoref{defn:gate-quotient}.4)}
 \end{eqnarray*}
+and
 \begin{eqnarray*}
 [u:v] &=& [u_1] \cdot [u_2:v]\\
     &=& [u_1] \cdot \inparen{\sum_{w\in \mathcal{F}_m} [u_2:w]\cdot [w:v]} \quad\text{(inductive hypothesis)}\\
-    &=& \sum_{w\in \mathcal{F}_m}([u_1]\cdot [u_2:w]) \cdot [w:v] = \sum_{w\in \mathcal{F}_m}[u:w] \cdot [w:v]\quad\text{(\autoref{defn:gate-quotient}.4)}
+    &=& \sum_{w\in \mathcal{F}_m}([u_1]\cdot [u_2:w]) \cdot [w:v] = \sum_{w\in \mathcal{F}_m}[u:w] \cdot [w:v].\quad\text{(\autoref{defn:gate-quotient}.4)}
 \end{eqnarray*}
 
 \end{proof}
@@ -506,7 +506,7 @@ As mentioned
 earlier, the original proof of \cite{vsbr83} follows a bottom-up
 approach, but it would be more useful to us to take a top-down
 approach (as in \cite{ajmv98}) to obtain some additional structural
-properties that we would require.\\
+properties that we require.\\
 
 \begin{theorem}[\autoref{thm:vsbr} restated]\label{thm:vsbr-with-structure}
 Let $\Phi$ be a homogeneous, right-heavy circuit of size $s$ computing an $n$-variate degree $d$ polynomial. 
@@ -525,7 +525,7 @@ Then, there is a circuit $\Phi'$ of size $\poly(s)$ with the following propertie
 Thus by \eqref{eqn:vsbr-for-u},
   \begin{eqnarray*}
     [u] & = & \sum_{w\in \mathcal{F}(u)} [u:w] \cdot [w]\\ 
-    & = & \sum_{w\in \mathcal{F}(u)} [u:w] \cdot [w_L] \cdot [w_R]
+    & = & \sum_{w\in \mathcal{F}(u)} [u:w] \cdot [w_L] \cdot [w_R].
   \end{eqnarray*}
   By our choice of $m$, all the terms on the RHS have degree at most
   $\deg(u)/2$. 
@@ -539,7 +539,7 @@ By
   \eqref{eqn:vsbr-for-uv},
   \begin{eqnarray*}
     [u:v] & = & \sum_{w\in \mathcal{F}(u,v)} [u:w] \cdot [w:v]\\ 
-    & = & \sum_{w\in \mathcal{F}(u,v)} [u:w] \cdot [w_L] \cdot [w_R:v]
+    & = & \sum_{w\in \mathcal{F}(u,v)} [u:w] \cdot [w_L] \cdot [w_R:v].
   \end{eqnarray*}
   Again by the choice of $m$, the degree of $[u:w]$ and the degree of
   $[w_R:v]$ is at most $(\deg(u) - \deg(v))/2$. 
@@ -550,7 +550,7 @@ Nevertheless, we can
   \begin{eqnarray*}
     [u:v] & = & \sum_{w\in \mathcal{F}(u,v)} [u:w] \cdot [w_L] \cdot [w_R:v]\\
     & = & \sum_{w\in \mathcal{F}(u,v)} [u:w] \inparen{\sum_{p \in \mathcal{F}(w_L)} [w_L:p] \cdot [p_L] \cdot [p_R]}\cdot [w_R:v]\\
-    & = & \sum_{w\in \mathcal{F}(u,v)}\sum_{p\in \mathcal{F}(w_L)} [u:w] \cdot  [w_L:p] \cdot [p_L] \cdot [p_R]\cdot [w_R:v]
+    & = & \sum_{w\in \mathcal{F}(u,v)}\sum_{p\in \mathcal{F}(w_L)} [u:w] \cdot  [w_L:p] \cdot [p_L] \cdot [p_R]\cdot [w_R:v].
   \end{eqnarray*}
   Now all the terms on the RHS have degree at most $(\deg(u) -
   \deg(v))/2$ as required. 
@@ -592,7 +592,7 @@ Then for any $0< t \leq d$, $f$ can be equivalently computed by a homogeneous $\
 
 If we were to optimize the size of the final depth four circuit, then we should choose $t = \sqrt{d}$ to get a $\SPSP^{[t]}$ circuit of size $s^{O(\sqrt{d})}$. 
 Note that this implies that if we could prove a lower bound of $n^{\omega(\sqrt{d})}$ for such $\SPSP^{[\sqrt{d}]}$ circuits, then we would have proved a lower bound for general circuits! 
-In fact, in the recent past, we have come pretty close to the required threshold and we shall see them in the later chapters. \\
+In fact, in the recent past, we have come pretty close to the required threshold and we shall see these lower bounds in the later chapters. \\
 
 In this section, we shall see a proof of \autoref{thm:av} but this is not the original proof of Tavenas~\cite{Tav13}. 
 We shall see an alternate proof by \cite{saptharishivinay14}, which I find more insightful. 
@@ -600,24 +600,25 @@ We shall see an alternate proof by \cite{saptharishivinay14}, which I find more 
 \begin{proofof}{\autoref{thm:av}}
 Let $C$ be the $O(\log d)$ depth  circuit computing $f$ obtained from \autoref{thm:vsbr} applied on the size $s$ circuit computing $f$. 
 Let $s'$ be the size of $C$. 
-If $g$ is a polynomial computed at any intermediate node of $C$, then from the structure of $C$ (~\autoref{thm:vsbr-with-structure}) we have a homogeneous expression
+If $g$ is a polynomial computed at any intermediate node of $C$, then from the structure of $C$ (\autoref{thm:vsbr-with-structure}) we have a homogeneous expression
 \begin{equation}\label{eqn:vsbr-expansion}
 g \spaced{=} \sum_{i=1}^{s'} g_{i1} \cdot g_{i2} \cdot g_{i3} \cdot g_{i4} \cdot g_{i5} 
 \end{equation}
 where each $g_{ij}$ is computed by a node in $C$ as well, and $\deg(g_{ij}) \leq \deg(g)/2$. 
 If we look at \eqref{eqn:vsbr-expansion} for $f$, then the RHS is a $\SPSP^{[d/2]}$ circuit of top fan-in $s'$ computing $f$. 
-To obtain a $\SPSP^{[t]}$ circuit eventually, we shall do the following natural process. 
+To obtain a $\SPSP^{[t]}$ circuit eventually, we shall do the following natural process: 
 \begin{quote}
   For each summand $g_{i1}\dots g_{ir}$ in the RHS, if the largest degree $g_{ij}$ has degree more than $t$, expand that $g_{ij}$ in-place using \eqref{eqn:vsbr-expansion}. 
   
   Repeat this process until all $g_{ij}$'s on the RHS have degree at most $t$. 
 \end{quote}
 
-Note that in each iteration of the above procedure, we increase the top fan-in by a multiplicative factor of $s'$, and what we gain is that some the terms in the RHS would now have smaller degrees. 
+Note that in each iteration of the above procedure, we increase the top fan-in by a multiplicative factor of $s'$, and
+what we gain is that some of the terms in the RHS will now have smaller degrees. 
 If we could show that the in $O(d/t)$  iterations  all terms on the RHS have degree at most $t$, then we would have obtained an $\SPSP^{[t]}$ circuit of top fanin $s'^{O(d/t)}$ computing $f$. \\
 
 To bound the number of iterations, let us count the number of terms of degree more than $t/8$ in each term. 
-Note that since we would always maintain homogeneity, the number of terms of degree  $t/8$ or more in any summand  is at most $8d/t$. 
+Note that since we will always maintain homogeneity, the number of terms of degree at least $t/8$ in any summand is at most $8d/t$. 
 Thus, it suffices to show that each iteration increases the number of terms of degree $t/8$ by at least one. 
 
 Note that in \eqref{eqn:vsbr-expansion}, if $\deg(g) = d'$ then the largest degree term of any summand on the RHS is at least $d'/5$ (since the sum of the degrees of the five terms must add up to $d'$). 
@@ -632,7 +633,7 @@ Observing that any polynomial of degree $t$ can have at most $n^t$ monomials, we
 \end{proofof}
 
 Thus, proving a ``good enough'' top fanin (or size) lower bound for the class of $\SPSP^{[t]}$ circuit would suffice for proving lower bounds for general circuits. 
-We would be using this fact quite a lot so we state this explicitly as a corollary. 
+We will be using this fact quite a lot so we state this explicitly as a corollary. 
 
 \begin{corollary}\label{cor:av}
 If $f$ is an $n$-variate degree $d$ polynomial that requires homogeneous $\SPSP^{[t]}$ circuits of top fan-in $n^{\omega(d/t)}$ to compute it, then $f$ requires general arithmetic circuits of size $n^{\omega(1)}$ to compute it. 
@@ -650,8 +651,7 @@ There have been some further depth reductions results.
 
 \begin{theorem}[\cite{gkks13b}] If $f$ is an $n$-variate degree $d$ polynomial in $\Q[\vecx]$ that can be computed by an arithmetic circuit of size $s$, then it can be equivalently computed by a depth three circuit of size $s^{O(\sqrt{d})}$. 
 \end{theorem}
-
-We shall defer this theorem to later in the interest of presenting more insight and intuition. 
+We shall postpone  this theorem to a later time, in the interest of presenting more insight and intuition.
 They would be better placed after we have seen a few of the recent lower bounds for restricted depth four circuits (but those who are impatient can find it in \autoref{sec:depth-3-red}). 
 We now proceed to see some lower bounds. 
 
@@ -662,7 +662,7 @@ In this section we shall revisit \autoref{thm:av} when it is applied to formulas
 Do the resulting depth four circuits have any additional structure when we start from a homogeneous formula?
 The alternate proof of Saptharishi and Vinay~\cite{saptharishivinay14} provides some insight into this. 
 
-We would need the following lemma that was present in the survey of Shpilka and Yehudayoff \cite{sy} and also in the result of Hrube\v{s} and Yehudayoff \cite{HY11a} that we shall see a proof of in \autoref{chap:multilinear} as \autoref{lem:mult-logproduct} and \autoref{lem:hom-logproduct}.
+We will need the following lemma that was present in the survey of Shpilka and Yehudayoff \cite{sy} and also in the result of Hrube\v{s} and Yehudayoff \cite{HY11a} which we shall see a proof of in \autoref{chap:multilinear} as \autoref{lem:mult-logproduct} and \autoref{lem:hom-logproduct}.
 
 
 \begin{lemma}[\autoref{lem:hom-logproduct} stated without proof]\label{lem:hom-logproduct-restated}
@@ -692,7 +692,11 @@ Then for any $0< t \leq d$, $f$ can be equivalently computed by a homogeneous $\
 a \geq \frac{1}{10}\pfrac{d}{t} \log t.
 \]
 \end{theorem}
-What this means is that even though the degree of all polynomials computed by the bottom two levels of the $\SPSP$ circuit have degree bounded by $t$, each summand is a product of much more than $d/t$ factors. Another way to view this is that \autoref{thm:av} gives a $\SPSP$ circuit of size $s^{O(d/t)}$ where the maximum bottom degree and \emph{average bottom degree} are both bounded by $O(t)$. Whereas in the above theorem we have maximum bottom degree bounded by $t$ but \emph{average bottom degree} bounded by $(t / \log t)$. 
+What this means is that even though the degree of all polynomials computed at depth 3 of the $\SPSP$ circuit have degree
+bounded by $t$, each summand is a product of much more than $d/t$ factors. Another way to view this is that
+\autoref{thm:av} gives a $\SPSP$ circuit of size $s^{O(d/t)}$ where the maximum bottom degree and the \emph{average bottom
+    degree} are both bounded by $O(t)$. Whereas in the above theorem the maximum bottom degree is bounded by $t$ but the
+\emph{average bottom degree} is bounded by $O(t / \log t)$. 
 
 \begin{proof}The proof is exactly along the lines of \autoref{thm:av}
   but instead of using the $5$-product expression in \eqref{eqn:vsbr-expansion}, we shall use the log-product expression of \eqref{eqn:dred-formula-logproduct}.
