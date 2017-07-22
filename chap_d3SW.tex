@@ -1,24 +1,24 @@
 \chapter{Lower bounds for depth-3 circuits}\label{chap:d3SW}
 
 In this chapter, we shall see the lower bound of Shpilka and Wigderson~\cite{sw2001} for non-homogeneous depth-$3$ circuits over arbitrary fields.
-The main theorem of this section would be the following \emph{quadratic} lower bound. 
+The main theorem of this section will be the following \emph{quadratic} lower bound.
 
 \begin{theorem}[\cite{sw2001}]\label{thm:SW-SPS-main-thm}
 Any $\SPS$ circuit that computes the polynomial $\ESym_d$, for $d = n/100$ must have at least $\Omega(n^2)$ wires. 
 \end{theorem}
 
-In fact, $\ESym_d$ can indeed be computed by a $O(n^2)$-sized  $\SPS$ circuit over a characteristic zero field (\autoref{ex:ben-or-trick}) and hence the above result is tight for $\ESym_d$. 
+In fact, $\ESym_d$ can be computed by a $O(n^2)$-sized  $\SPS$ circuit over a characteristic zero field (\autoref{ex:ben-or-trick}) and hence the above result is tight for $\ESym_d$.
 Until recently, this was the best lower bound we knew for the class of general $\Sigma\Pi\Sigma$ circuits but a very recent result of Kayal, Saha and Tavenas~\cite{kst16} has improved this to an almost cubic lower bound (for a different explicit family of polynomials) which we shall see at a later point.
 This chapter however shall focus on the proof of the above theorem.
 
-\section{Lower bounds for hom. $\SPS$ circuits \cite{nw1997}}
+\section{Lower bounds for homogeneous $\SPS$ circuits \cite{nw1997}}
 
 Let us first consider the following restricted question.
 Say we want to compute an $n$-variate degree $d$ polynomial $f$ using a $\SPS$ circuit, but under the restriction that all intermediate computations have degree at most $d$.
 The class of such circuits are denoted by $\Sigma\Pi^{[d]}\Sigma$ circuits.
 Can we prove lower bounds for this class first?
 
-Indeed, and in fact we have already seen how to in \autoref{chap:simpleLBs}. But it would be good to recall the method again as we would be using this heavily. 
+Indeed, and in fact we have already seen how to in \autoref{chap:simpleLBs}. But it will be good to recall the method again as we will be using this heavily.
 
 \begin{theorem}[\cite{nw1997}]
 Any $\Sigma\Pi^{[d]}\Sigma$ circuit that computes $\ESym_d$ must have size $\frac{\binom{n}{d/2}}{2^d}$. 
@@ -26,9 +26,9 @@ Any $\Sigma\Pi^{[d]}\Sigma$ circuit that computes $\ESym_d$ must have size $\fra
 Thus, if $n = 3d$, this gives an exponential lower bound. 
 
 \begin{proof}
-For a polynomial $f$, define the \emph{dimension of $k$-th order partial derivatives}, denoted by $\CM{NW}_k(f)$, as follows
+For a polynomial $f$, define the \emph{dimension of $k$-th order partial derivatives}, denoted by $\CM{NW}_k(f)$, as follows:
 \[
-\CM{NW}_k(f) \spaced{=} \dim \partial^{=k}(f)
+\CM{NW}_k(f) \spaced{=} \dim \partial^{=k}(f).
 \]
 \begin{claim}\label{claim:d3-nw-upperbound}
   If $f = \ell_1 \cdots \ell_d$ where each $\ell_i$ is a linear polynomial, then $\CM{NW}_k(f) \leq \binom{d}{k}$. 
@@ -36,11 +36,11 @@ For a polynomial $f$, define the \emph{dimension of $k$-th order partial derivat
 \end{claim}
 
 \noindent
-A fact that we would need here but won't prove is that $\ESym_d$ has large space of partial derivatives. 
+A fact that we will need here but won't prove is that $\ESym_d$ has large space of partial derivatives.
 
 \begin{claim}
 \[
-\CM{NW}_k(\ESym_d) = \min\inparen{\binom{n}{d-k}, \binom{n}{k}}
+\CM{NW}_k(\ESym_d) = \min\inparen{\binom{n}{d-k}, \binom{n}{k}}.
 \]
 Hence, for $k = d/2$, we get 
 \[
@@ -62,7 +62,7 @@ where $C' \in \Sigma\Pi^{[d]}\Sigma$ and  $T_1,T_2$ is a product of linear forms
 
 {\bf Key Idea: } Replace some variables by linear functions in other variables to make $T_1$ and $T_2$ equal to zero. \\
 
-Say $T_1$ had one of the linear polynomials as $x_1 + 3x_2 + 5x_3 - 4$, then we shall replace $x_1$ by $- (3x_2 + 5x_3 - 4)$.
+Say $T_1$ had one of the linear polynomials being $x_1 + 3x_2 + 5x_3 - 4$, then we shall replace $x_1$ by $- (3x_2 + 5x_3 - 4)$.
 The result is that $T_1$ now becomes zero.
 What happens to $T_2$?
 Note that $T_2$ after this substitution still remains a product of linear polynomials, and its degree cannot increase in this process.
@@ -71,7 +71,7 @@ But this is still good because the goal is to eliminate all high degree $T_i$s c
 This was the key idea of Shpilka and Wigderson~\cite{sw2001} and we shall formalize this as a lemma.
 
 \begin{lemma}\label{lem:d3-few-affine-projection}
-  Let $C = T_1 + \cdots + T_s$ be a $\Sigma\Pi\Sigma$ and suppose $r$ of the $T_i$s have degree greater than $d$.
+  Let $C = T_1 + \cdots + T_s$ be a $\Sigma\Pi\Sigma$ circuit and suppose $r$ of the $T_i$s have degree greater than $d$.
 Then by taking an \emph{affine projection of co-dimension at most $r$}, that is by setting at most $r$ variables to linear functions in the remaining variables, the resulting circuit $C' = T_1' + \cdots T_{s'}'$ is a $\Sigma\Pi^{[d]}\Sigma$ circuit with $s' \leq s$.
 \end{lemma}
 
@@ -95,7 +95,8 @@ Thus, if $k = (d-2r)/2$, then
 \]
 \end{theorem}
 
-We shall defer the proof of \autoref{thm:SW-Esym-robust} to the end of this section but see why the above theorem implies \autoref{thm:SW-SPS-main-thm}. 
+We shall defer the proof of \autoref{thm:SW-Esym-robust} to the end of this section but see why the above theorem
+implies \autoref{thm:SW-SPS-main-thm}, the lower bound for $\Sigma\Pi\Sigma$.
 
 \begin{proof}[Proof of \autoref{thm:SW-SPS-main-thm}]
 Consider the polynomial $\ESym_d$ for $d = \frac{n}{100}$. Suppose it is computable by a $\Sigma\Pi\Sigma$ circuit $C = T_1 + \cdots + T_s$ with at most $\frac{d^2}{100}$ wires. Let $r$ be the number of $T_i$s of degree more than $d$. Note that, given the bound on the number of wires, there cannot be more than $\frac{d}{100}$ $T_i$s that have degree more than $d$. Hence, we know that $r \leq \frac{d}{100}$. 
@@ -126,8 +127,7 @@ This entire discussion can be summarized in the following very general remark.
 What we did above was choose the polynomial $f$ as $\ESym_d$ with $D = d = \Omega(n)$ and using the fact that the partial derivative space remains large even after an affine restriction of co-dimension $r = \Omega(d)$, we get a $\Omega(d^2) = \Omega(n^2)$ lower bound for $\SPS$ circuits.
 
 However, this remark is quite general and in principle, if we could prove a lower bound for say $\Sigma\Pi^{[d^2]}\Sigma$ circuits using some measure, then we could potentially extend this to give a cubic lower bound using the affine projection idea.
-In fact, Kayal, Saha and Tavenas \cite{kst16} (which was subsequently strengthened by Balaji, Limaye and Srinivasan \cite{BLS16}) do indeed show an \emph{almost} cubic lower bound using a measure that we shall be discussed later.
-We shall see this later in the survey.
+In fact, Kayal, Saha and Tavenas \cite{kst16} (which was subsequently strengthened by Balaji, Limaye and Srinivasan \cite{BLS16}) do indeed show an \emph{almost} cubic lower bound using a measure that we shall discuss later.
 
 \begin{theorem}[\cite{kst16}] There is an explicit $n$-variate poylnomial $f$ of degree $d$ such that any $\SPS$ circuit computing $f$ must require $\Omega\inparen{n^3}{\poly \log(n)}$ size. 
 \end{theorem}
@@ -137,15 +137,15 @@ Much later in the survey\todo{add link}, we shall see the proof of Balaji, Limay
 \subsection{Rough proof of Theorem~\ref{thm:SW-Esym-robust}}
 
 Let us order the variables as $x_1 \succ x_2 \succ \cdots \succ x_n$.
-Say we have an affine projection $\rho$ of co-dimension $r$ that sets the linear polynomials $\set{\ell_1,\cdots, \ell_r}$ to zero. Let $x_{i_j}$ be the \emph{highest} variables participating in each $\ell_j$, that is,
+Say we have an affine projection $\rho$ of co-dimension $r$ that sets the linear polynomials $\set{\ell_1,\dots, \ell_r}$ to zero. Let $x_{i_j}$ be the \emph{highest} variables participating in each $\ell_j$, that is,
 \[
   \ell_j \spaced{=} x_{i_j} - \ell_j'.
 \]
 Thus, applying this affine restriction is equivalent to replacing each $x_{i_j}$ by $\ell_{j}'$. To get a sense of what this does to $\ESym_d$, let $y_j$ be the \emph{highest variable} participating in $\ell_j'$.
 
-Let us now look at $\ESym_d$, paying attention to the variables $x_{i_j}$s and $y_j$s. We may assume that  $S = \set{x_{i_1},\ldots, x_{i_r}, y_1,\ldots, y_r}$ are all distinct variables (why?).
+Let us now look at $\ESym_d$, paying attention to the variables $x_{i_j}$s and $y_j$s. We may assume that  $S = \set{x_{i_1},\ldots, x_{i_r}, y_1,\ldots, y_r}$ are all distinct variables.
 \begin{eqnarray*}
-  \ESym_d(x_1,\cdots, x_n) & = &  x_{i_1}\cdots x_{i_r}\cdot y_1\cdots y_r \cdot \ESym_{d - 2r}(\vecx \setminus S) \spaced{+} \text{other monomials}
+  \ESym_d(x_1,\dots, x_n) & = &  x_{i_1}\cdots x_{i_r}\cdot y_1\cdots y_r \cdot \ESym_{d - 2r}(\vecx \setminus S) \spaced{+} \text{other monomials}
 \end{eqnarray*}
 Replacing each $x_{i_j}$ by $\ell_j'$ introduces higher powers of $y_1,\ldots, y_r$.
 
