@@ -5,7 +5,7 @@ This chapter shall present the lower bound of Grigoriev and Karpinski
 fields. 
 A follow-up paper of Grigoriev and Razborov \cite{gr00}
 extended the result over function fields, also including a weaker
-lower bound for the permanent, but we shall present a slightly
+lower bound for the permanent, but we present a slightly
 different proof that works for the permanent as well.
 
 \begin{theorem}\cite{grigoriev98}\label{thm:gk-main-thm}
@@ -66,7 +66,7 @@ cannot be approximated by a low-rank $\SPS$ circuit.
 \section{The complexity measure}
 
 For any polynomial $f \in \F_q[x_{11},\dots, x_{nn}]$, define the matrix
-$M_k(f)$ as follows --- the columns of $M_k(f)$ are indexed by $k$-th
+$M_k(f)$ as follows: The columns of $M_k(f)$ are indexed by $k$-th
 order partial derivatives of $f$, and rows by elements of $\F_q^{n}$,
 with the entry being the evaluation of the partial derivative (column
 index) at the point (row index).\\
@@ -131,38 +131,38 @@ For $\Det_d$, we shall choose $\tau = \Omega(d)$.
 For the elementary symmetric polynomial $\ESym_d$, we shall choose $\tau = \Omega(d \log n)$. 
  
 We shall call a term $T = \ell_1\cdots \ell_d$ to be
-of \emph{low rank} if $\mathrm{rank}(T) \leq \tau$, and \emph{large
+of \emph{low rank} if $\mathrm{rank}(M_k(T)) \leq \tau$, and \emph{large
   rank} otherwise. 
 By the above observation, we need to upper-bound
 the measure $\CM{GK}_{k,\mathcal{A}}$ for each term $T$, for a
 suitable choice of $\mathcal{A}$.\\
 
 \noindent 
-{\bf Low rank terms $(\mathrm{rank}(T) \leq \tau)$:}
+{\bf Low rank terms $(\mathrm{rank}(M_{k}(T)) \leq \tau)$:}
 
 Suppose $T = \ell_1 \cdots \ell_d$ with $\inbrace{\ell_1, \dots,
   \ell_r}$ being a maximal independent set of linear polynomials (with
 $r \leq \tau$). 
 Then $T$ can be expressed as a linear combination of
-terms from the set $\setdef{\ell_1^{e_1}\dots \ell_r^{e_r}}{e_i\leq d
+terms from the set $\setdef{\ell_1^{e_1}\cdots \ell_r^{e_r}}{e_i\leq d
   \quad \forall i\in [r]}$. 
 And since the matrix $M_k(f)$ depends only
 on evaluations in $\F_q^{n}$, we can use the relation that $x^q = x$
 in $\F_q$ to express the evaluation of  $T$ on $\F_q^{n}$ as a linear
-combination of $\setdef{\ell_1^{e_1}\dots \ell_r^{e_r}}{e_i<q \quad
+combination of $\setdef{\ell_1^{e_1}\cdots \ell_r^{e_r}}{e_i<q \quad
   \forall i\in [r]}$. 
 Therefore, for any set $\mathcal{A}\subseteq
 \F^{n}$, we have that
 $$
 \CM{GK}_{k;\mathcal{A}}(T) \quad \leq \quad
-\mathrm{rank}(M_k(f)) \quad \leq \quad q^r \quad\leq \quad q^{\tau}.
+\mathrm{rank}(M_k(T)) \quad \leq \quad q^r \quad\leq \quad q^{\tau}.
 $$
 
 
 \noindent
-{\bf High rank terms $(\mathrm{rank}(T) > \tau)$:}
+{\bf High rank terms $(\mathrm{rank}(M_{k}(T)) > \tau)$:}
 
-Suppose $T = \ell_1\dots \ell_d$ whose rank is greater than $\tau$, and let $\inbrace{\ell_1, \dots, \ell_r}$ be a maximal
+Suppose $T = \ell_1\cdots \ell_d$ whose rank is greater than $\tau$, and let $\inbrace{\ell_1, \dots, \ell_r}$ be a maximal
 independent set. 
 We want to use the fact that since $T$ is a product
 of at least $r$ independent linear polynomials, most evaluations would
@@ -175,7 +175,7 @@ Further, if the $\ell_i$s are linearly independent, then they \emph{independentl
 Thus, on expectation, a random point $\veca$ would evaluate to zero on $r/q > \tau/q$ of them. 
 Since we chose $k = \tau/10q \ll r/q$, an application of Chernoff's bound shows that 
 \[
-\Pr_\veca\insquare{\text{ $\veca$ evaluates to zero on at most $k$ of the factors of $T$}} \spaced{\leq} \exp(-\tau/8)
+\Pr_\veca\insquare{\text{ $\veca$ evaluates to zero on at most $k$ of the factors of $T$}} \spaced{\leq} \exp(-\tau/8).
 \]
 Let $\mathcal{E}_T$ be the set of $\veca$s in the above event. Then every $\veca$ outside $\mathcal{E}_T$ evaluates at least $(k+1)$ factors of $T$ to zero. 
 Thus, not only is $T$ zero at $\veca$ but so are all its $k$-th order partial derivatives. 
@@ -192,7 +192,7 @@ Let $C$ be a depth-$3$ circuit over the field $\F_q$ of size at most $s$. Then, 
 where $\mathcal{A} = \F_q^n \setminus \mathcal{E}$. 
 \end{lemma}
 
-All that is left to do now is lower bound the measure for an explicit polynomial, and set the parameter $\tau$ appropriately. We shall first consider the polynomial $\ESym_{\leq d}$ which is a little simpler, and the look at $\Det_d$ and $\Perm_d$. 
+All that is left to do now is lower bound the measure for an explicit polynomial, and set the parameter $\tau$ appropriately.
 
 \section{Lower bound for $\Det_d$ and $\Perm_d$}
 
@@ -205,7 +205,7 @@ $\abs{\mathcal{A}} = (1 - o(1)) q^{d^2}$.
   For any set $\mathcal{A} \in \F_q^{d^2}$ such that
   $\abs{\mathcal{A}} = (1 - o(1)) \cdot q^{d^2}$, we have that
   \[
-  \CM{GK}_{k,\mathcal{A}}(\Det_d) \spaced{=}  \binom{d}{k}^2
+  \CM{GK}_{k,\mathcal{A}}(\Det_d) \spaced{=}  \binom{d}{k}^2.
   \]
 \end{lemma}
 
@@ -219,7 +219,7 @@ theorem for later and see how this would imply the proof of
   Assume that there is a $\Sigma\Pi\Sigma$ circuit of size  $s < \exp(\tau/10) = \exp(\alpha d / 10)$ that computes $\Det_d$. 
   Then, by \autoref{lem:GK-upper-bound}, there is a set $\mathcal{A}$ of size $(1 - o(1)) q^{d^2}$ such that 
   \[
-  \CM{GK}_{k;\mathcal{A}}(\Det_d) \spaced{\leq} s \cdot  q^{\alpha d}
+  \CM{GK}_{k;\mathcal{A}}(\Det_d) \spaced{\leq} s \cdot  q^{\alpha d}.
   \]
   On the other hand, by \autoref{lem:GK-technical-lemma} we have
   \[
@@ -229,7 +229,7 @@ theorem for later and see how this would imply the proof of
   Together, this forces 
   \begin{eqnarray*}
     s \cdot q^{\alpha d}  & \geq & \Omega\inparen{2^{2d \cdot H_2(\alpha/10q)}}\\
-    \implies \log s & = & \Omega((2H_2(\alpha/10q) - \alpha \log q) \cdot d)
+    \implies \log s & = & \Omega((2H_2(\alpha/10q) - \alpha \log q) \cdot d).
   \end{eqnarray*}
   The binary entropy function satisfies $H_2(\epsilon) > \epsilon \log_2(1/\epsilon)$. Hence, we can always set $\alpha$ to be small enough constant to ensure that $2H_2(\alpha/10q) - \alpha \log q > 0$. 
 Thus we get $s =  \exp(\Omega_q(d))$. 
@@ -283,7 +283,7 @@ In other words, no linear combination of columns of
 $M_k(\Det_d;\mathcal{A})$ results in the zero vector.
 
 
-The proof of the above lemma would be an induction on the number of
+The proof of the above lemma is by induction on the number of
 minors contributing to the linear combination. 
 As a base case, we
 shall use a well-known fact about $\Det_d$ and $\Perm_d$ of random
@@ -322,7 +322,7 @@ That is,
   values.
   \begin{eqnarray*}
     \Pr_{A}[p(A)\neq 0] & \geq & \Pr[x_{11} M_1' + \dots + x_{1d} M_d' + M'' \neq 0 \;|\; \text{some }M_{i}'\neq 0]\\
-    & & \quad \times \Pr[\text{some }M_i' \neq 0]
+    & & \quad \cdot \Pr[\text{some }M_i' \neq 0]
   \end{eqnarray*}
   Note that once we have set rows $2,\dots, d$ to random values,
   $p(X)$ reduces to a linear polynomial in $\inbrace{x_{11},\dots,
@@ -333,7 +333,7 @@ Further, a random evaluation of any non-constant linear
 Hence,
   \begin{eqnarray*}
 \Pr_{A}[p(A)\neq 0] & \geq & \Pr[x_{11} M_1' + \dots + x_{1d} M_d' + M'' \neq 0 \;|\; \text{some }M_{i}'\neq 0]\\
- & & \quad \times \Pr[\text{some }M_i' \neq 0]\\
+ & & \quad \cdot \Pr[\text{some }M_i' \neq 0]\\
     & = & \inparen{1 - \frac{1}{q}}\cdot \Pr[\text{some }M_i' \neq 0].
   \end{eqnarray*}
   Now comes  Koutis' Trick: the term $\inparen{1 -
@@ -345,7 +345,8 @@ Hence,
  & \geq & \Pr[ x_{11}M_1' + \dots + x_{1d} M_d'\neq 0]\\
  & = & \Pr\insquare{\inparen{\sum_{i:\text{Row}_1\in M_i} c_i M_i} \neq 0}.
 \end{eqnarray*}
-which is just the linear combination obtained by only considering
+Notice that the second equation holds as $M''$ is constant with respect to assignments of the first row.
+Now the final equation is just the linear combination obtained by only considering
 those minors that contain the first row. 
 Repeating this process for other
 rows/columns until only  one minor remains, we have
@@ -385,7 +386,7 @@ The goal of this section would be to get a lower bound on $\CM{GK}_{k;\mathcal{A
 \begin{lemma}\label{lem:esym-d3measure-lb}
 Consider the polynomial $\ESym_{\leq d}$ with $n = d^2$. If $k = d/2$ and $\mathcal{A} = \F_q^n \setminus \mathcal{E}$ with $\abs{\mathcal{E}} \leq \exp(-\omega(d\log q)) \cdot  q^n$, then
 \[
-\CM{GK}_{k;\mathcal{A}}(\ESym_{\leq d}) \spaced{\geq} \binom{n}{d/2}
+\CM{GK}_{k;\mathcal{A}}(\ESym_{\leq d}) \spaced{\geq} \binom{n}{d/2}.
 \]
 \end{lemma}
 
@@ -399,7 +400,7 @@ Assume that the polynomial $\ESym_{\leq d}$ can be computed by a $\Sigma\Pi\Sigm
 \]
 where $k = d/2$ and $\mathcal{A} = F_q^n \setminus \mathcal{E}$. On the other hand, from \autoref{lem:esym-d3measure-lb} we get
 \[
-\CM{GK}_{k;\mathcal{A}}(\ESym_{\leq d}) \spaced{\geq} \binom{n}{d/2} \spaced{\geq} 2^{(d/4) \log d}
+\CM{GK}_{k;\mathcal{A}}(\ESym_{\leq d}) \spaced{\geq} \binom{n}{d/2} \spaced{\geq} 2^{(d/4) \log d}.
 \]
 These two bounds force $s \geq \exp(\Omega_q(d \log d)) = \exp(\Omega_q(d\log n))$. 
 \end{proof}
@@ -411,12 +412,12 @@ We only need to prove \autoref{lem:esym-d3measure-lb} to complete the proof.
 
 We have set $k = d/2$ and are hence studying the evaluations partial derivatives of $\ESym_{\leq d}$ of order $d/2$ on points in $\mathcal{A}$. Let us first focus on the partial derivatives as formal polynomials. \\
 
-Consider the following matrix $M$ where each rows is indexed by a partial derivative of order $k = d/2$, columns indexed by monomials of degree $d -d/2 = d/2$ and the corresponding entry being $1$ if that monomial occurs in partial derivative of $\ESym_{\leq d}$ and zero otherwise. That is, each row of this matrix is a partial derivative of $\ESym_{\leq d}$ written down via its coefficients. Now notice that if we have a partial derivative corresponding to a subset $S$, a monomial corresponding to a subset $T$ would be present in $\partial_S(\ESym_{\leq d})$ if and only if $|T| \leq d/2$ and $S \intersection T = \emptyset$. These $\binom{n}{d/2} \times \binom{n}{\leq d/2}$ matrices have been well studied and are called  \emph{Disjointness Matrices}. The following lemma of Razborov~\cite{razborov87} shows that these matrices are full-rank. 
+Consider the following matrix $M$ where each rows is indexed by a partial derivative of order $k = d/2$, columns indexed by monomials of degree $d -d/2 = d/2$, and the corresponding entry being $1$ if that monomial occurs in partial derivative of $\ESym_{\leq d}$ and zero otherwise. That is, each row of this matrix is a partial derivative of $\ESym_{\leq d}$ written down via its coefficients. Now notice that if we have a partial derivative corresponding to a subset $S$, a monomial corresponding to a subset $T$ would be present in $\partial_S(\ESym_{\leq d})$ if and only if $|T| \leq d/2$ and $S \intersection T = \emptyset$. These $\binom{n}{d/2} \times \binom{n}{\leq d/2}$ matrices have been well studied and are called  \emph{Disjointness Matrices}. The following lemma of Razborov~\cite{razborov87} shows that these matrices are full-rank. 
 \begin{lemmawp}[Rank of disjointness matrices \cite{razborov87}] Let $D$ be a $\binom{n}{d} \times \binom{n}{\leq d}$ matrix such that 
 \[
 D(S,T) \spaced{=} \begin{cases}
-  1 & \text{if $S \intersection T = \emptyset$}\\
-  0 & \text{otherwise}
+  1 & \text{if $S \intersection T = \emptyset$},\\
+  0 & \text{otherwise}.
 \end{cases}
 \]
 Then, over any field $\F$, the matrix $D$ has rank $\binom{n}{d}$. 
