@@ -1,24 +1,25 @@
 \chapter{The Partial Derivative Matrix}\label{chap:evalDim}
 
-In this chapter, we shall look at a powerful technique introduced by Nisan~\cite{nis91} that has been instrumental in many lower bound proofs and also in constructing polynomial identity tests.
-Nisan~\cite{nis91} introduced the notion of the partial derivative matrix in the context of proving lower bounds for \emph{non-commutative} ABPs, and we shall see that first.
+In this chapter, we shall look at a powerful technique introduced by Nisan~\cite{nis91} that has been instrumental in many lower bound proofs and in constructing polynomial identity tests.
+Nisan~\cite{nis91} introduced the notion of the partial derivative matrix in the context of proving lower bounds for
+\emph{non-commutative} ABPs, and we shall see this lower bound first.
 
 \section{Non-commutative models of computation}
 
-A non-commutative polynomials over many variables, denoted by $\F\inbrace{x_1,\ldots, x_n}$, are formal polynomials over the variables wherein the variables do not commute.
+Non-commutative polynomials over many variables, where the ring of these polynomials is denoted by $\F\inbrace{x_1,\ldots, x_n}$, are formal polynomials over the variables wherein the variables do not commute.
 Hence, a polynomial $x_1x_2 - x_2x_1$ in $\F\set{x_1,\ldots, x_n}$ is a non-zero polynomial.
-They naturally can be added or multiplied but the order in which the variables are multiplied become important.
+They naturally can be added or multiplied but the order in which the variables are multiplied becomes important.
 Hence,
 \[
-(x_1 + x_2)(x_1 + x_2) \spaced{=} x_1^2 + x_2x_1 + x_1x_2 + x_2^2 \spaced{\neq} x_1^2 + 2x_1x_2 + x_2^2
+(x_1 + x_2)(x_1 + x_2) \spaced{=} x_1^2 + x_2x_1 + x_1x_2 + x_2^2 \spaced{\neq} x_1^2 + 2x_1x_2 + x_2^2.
 \]
-Each monomial is no longer identifiable by just an exponent vector but is rather a \emph{word} on the set $\set{x_1,\ldots, x_n}$. 
+We can identify each monomial by either an exponent vector over all possible non-commutative monomials or by a \emph{word} on the set $\set{x_1,\ldots, x_n}$. 
 
 In this space, we can continue to talk about arithmetic circuits or algebraic branching programs where we always keep track of the order of variables multiplied.
 In arithmetic circuits or formulas, every $\times$ gate has labelled left and right children.
 In an algebraic branching program, the weight of a path from source to sink is the product of the edge weights \emph{in the order from left to right}.
 
-Nisan \cite{nis91} asked the question of whether we can prove lower bounds in this more restricted model of computation. In his paper, he introduced the complexity measure via the \emph{Partial Derivative Matrix}, and used it to not just prove lower bounds but exactly calculate the size of the smallest non-commutative ABP computing a homogeneous polynomial $f$. \\
+Nisan \cite{nis91} asked the question of whether we can prove lower bounds in this more restricted model of computation. He introduced the complexity measure via the \emph{Partial Derivative Matrix}, and used it to not just prove lower bounds but exactly calculate the size of the smallest non-commutative ABP computing a homogeneous polynomial $f$. \\
 
 \begin{exercise}
 Show that, given any non-commutative ABP of size $s$ computing a homogeneous non-commutative polynomial of degree $d$, we can construct a homogeneous non-commutative ABP (edge weights are homogeneous linear forms) of size at most $s \cdot \poly(d)$ computing $f$. 
@@ -26,7 +27,8 @@ Show that, given any non-commutative ABP of size $s$ computing a homogeneous non
 
 \subsection{Partial derivative matrix for non-commutative ABPs}
 
-\begin{definition}[Nisan's partial derivative matrix \cite{nis91}] Let $f$ be an $n$-variate homogeneous non-commutative polynomial of degree $d$. For any $i \in [d]$, the matrix $M_i(f)$ is defined follows:
+\begin{definition}[Nisan's partial derivative matrix \cite{nis91}] Let $f$ be an $n$-variate homogeneous non-commutative
+    polynomial of degree $d$. For any $i \in [d]$, the matrix $M_i(f)$ is defined as follows:
   \begin{quote}
     The matrix $M_i(f)$ has $n^i$ rows and $n^{d-i}$ columns, indexed by monomials (or words) of length $i$ and $d-i$ respectively. The entry at $(m_1, m_2)$ is the coefficient of the monomial (or word) $m_1 \cdot m_2$ in $f$. \qedhere
   \end{quote}
@@ -35,7 +37,7 @@ Show that, given any non-commutative ABP of size $s$ computing a homogeneous non
 \begin{theorem}[\cite{nis91}]\label{thm:nis-noncomm-abp}
 For any $n$-variate homogeneous non-commutative polynomial $f$ of degree $d$, the smallest non-commutative ABP that computes $f$ must have size
 \[
-\rank(M_0(f)) + \rank(M_1(f)) +  \cdots + \rank(M_{d-1}(f)).
+\rank(M_0(f)) + \rank(M_1(f)) +  \cdots + \rank(M_{d}(f)).
 \]
 \end{theorem}
 The above is not an estimate; Nisan's result says that the sum of the ranks of the partial derivative matrix is \emph{exactly} the size of the smallest ABP.
@@ -63,7 +65,7 @@ With this claim, it follows that the rank of $M$ is a lower bound for $r$.
 Complete the proof of  \autoref{subclaim:Nisan-ABP-proof}, and also show that the bound is tight to show the other direction of \autoref{thm:nis-noncomm-abp}. 
 \end{exercise}
 
-\subsection{An explicit hard polynomial}
+\subsection{An explicit, hard polynomial}
 
 To complete the proof, we just need to construct an explicit polynomial for which one of the $M_i$'s has large rank.
 A natural attempt is to make $M_{d/2}$ to be full-rank by making it something like the identity matrix.
@@ -75,7 +77,8 @@ or the \emph{Palindrome polynomial} $\mathrm{Pal}_d$ defined as
 \[
 \mathrm{Pal}_d \spaced{:=} \sum_{w\in \set{x_1, \ldots, x_n}^{d/2}} \vecx_{w} \vecx_{\mathrm{reverse}(w)},
 \]
-then clearly $\rank(M_{d/2})$ is $n^{d/2}$ giving the required lower bound. 
+then clearly $\rank(M_{d/2})$ is $n^{d/2}$ giving the required lower bound. Notice that $\mathrm{Doub}_d$ results in the
+matrix with ones on the cross diagonal and zero everywhere else.
 
 \begin{theorem}[\cite{nis91}] Any non-commutative ABP computing the polynomial $\mathrm{Doub}_d$ or $\mathrm{Pal}_d$ must have size $n^{\Omega(d)}$. 
 \end{theorem}
@@ -108,7 +111,7 @@ Thus, the partial derivative matrix that was used in the non-commutative ABP low
 We shall abuse notation and use the following definition of the partial derivative matrix that is more useful for the commutative world.
 
 \begin{definition}[Partial derivative matrix for a partition] \label{defn:pdm-commutative}
-For any given partition of variables $X = Y \sqcup Z$, define the \emph{partial derivative matrix} $M_{Y,Z}(f)$ to be the matrix described as follows --- the rows are indexed by monomials in $Y$, columns indexed by monomials in $Z$, and the $(i,j)$-th entry of the matrix is the coefficient of the monomial $m_i(Y)\cdot m_j(Z)$ in $f$. 
+For any given partition of variables $X = Y \sqcup Z$, define the \emph{partial derivative matrix} $M_{Y,Z}(f)$ to be the matrix described as follows: The rows are indexed by monomials in $Y$, columns indexed by monomials in $Z$, and the $(i,j)$-th entry of the matrix is the coefficient of the monomial $m_i(Y)\cdot m_j(Z)$ in $f$.
 Further, we shall call a polynomial $f$ to be \emph{full-rank} if $M_{Y,Z}(f)$ is full-rank.
 \end{definition}
 
@@ -165,7 +168,9 @@ What is the rank of the partial derivative matrices for the following polynomial
 
 \subsection{An evaluation perspective}
 
-For this section, let us assume that we are working with a field that is large enough. The following is an alternative way to study the rank of the partial derivative matrix under some partition. It is essentially the same, but sometimes is easier to reason with and we shall see a few examples in this chapter. 
+For this section, let us assume that we are working with a field that is large enough. The following is an alternative
+way to study the rank of the partial derivative matrix under some partition. It is essentially the same, but sometimes
+is easier to reason about this measure. We will see a few examples in this chapter.
 
 \begin{definition}[Evaluation dimension]
 Let $X = Y \sqcup Z$. The evaluation dimension of a polynomial $f$, with respect to $Y \sqcup Z$, denoted by $\evalDim_{Y,Z}(f)$,  is defined as the rank of the following polynomials
@@ -188,7 +193,10 @@ Over any field $\F$, we always have that $\evalDim_{Y,Z}(f) \leq \rank(M_{Y,Z}(f
 To illustrate why this perspective is convenient, we shall take one example from \autoref{ex:pdm-rank} and compute the evaluation dimension of a $\SES$ circuit. 
 
 \begin{claim}
-Let $f = \sum_{i=1}^s \ell_i^d$. Then under any partition $X = Y \sqcup Z$, we have that $\evalDim_{Y,Z}(f) \leq (d+1) \cdot s$. 
+    Let $f = \sum_{i=1}^s \ell_i^d$. Then under any partition $X = Y \sqcup Z$, we have that
+    \[
+        \evalDim_{Y,Z}(f) \leq (d+1) \cdot s.
+    \]
 \end{claim}
 \begin{proof}
   It suffices to prove that the evaluation dimension of a single $\ell^d$ is at most $(d+1)$ and the lemma would follow due to sub-additivity.
