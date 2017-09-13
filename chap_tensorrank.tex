@@ -1,7 +1,7 @@
 \chapter{Tensor rank and formula lower bounds}\label{chap:tensorrk}
 
-In this chapter, we will establish an apriori surprising connection between lower bounds for homogeneous arithmetic formula and constructing explicit tensors of full rank.
-The chapter is based on a result of Raz~\cite{raz10}.
+In this chapter, we will establish an a priori surprising connection between lower bounds for homogeneous arithmetic formula and constructing explicit tensors of full rank.
+The chapter is based on a result by Raz~\cite{raz10}.
 
 \section{Tensors}
 
@@ -24,13 +24,13 @@ where each $V_i$ is a vector space over $\F$, of say dimension $m_i$, which is l
 \[
 T(\vecv_1, \ldots,\alpha\vecv_i + \beta\vecv_i', \ldots, \vecv_d) = \alpha T(\vecv_1, \ldots,\vecv_i, \ldots, \vecv_d) + \beta T(\vecv_1, \ldots,\vecv_i', \ldots, \vecv_d).
 \]
-The parameter $r$ is called the \emph{order} of the tensor, and we say that the \emph{shape of $T$} is $m_1 \times \cdots \times m_d$. 
+The parameter $d$ is called the \emph{order} of the tensor, and we say that the \emph{shape of $T$} is $m_1 \times \cdots \times m_d$.
 \end{definition}
 Since a tensor is linear in every coordinate, it suffices to specify the image of $T$ at the basis of $V_1 \times \cdots \times V_d$ and extend it linearly.
 So a tensor can indeed be thought of as filling up a $d$-dimensional array of shape $[m_1]\times \cdots \times [m_d]$ by field elements, the same way an $m\times n$ matrix is specified by an $m\times n$ array filled up with field elements.
 Indeed, a matrix is nothing but an order-$2$ tensor.
 
-It would sometimes be useful to switch between the two notions of thinking of a tensor as a multilinear map from $V_1 \times \cdots \times V_d$ to $\F$ and thinking a tensor as just a map from $[m_1] \times \cdots \times [m_d]$.
+It will sometimes be useful to switch between the two notions of thinking of a tensor as a multilinear map from $V_1 \times \cdots \times V_d$ to $\F$ and thinking a tensor as just a map from $[m_1] \times \cdots \times [m_d]$.
 So throughout this chapter, we shall fix a basis $\set{\vece_{i1},\ldots, \vece_{im_i}}$ for $V_i$ and when we shall use $T[j_1,\ldots, j_d]$ to really denote $T(\vece_{1j_1},\ldots, \vece_{dj_d})$.
 
 \subsection{Tensors as polynomials}
@@ -63,9 +63,9 @@ The same also holds in the other direction where we can interpret any set-multil
 Just like any matrix has a natural definition of \emph{rank}, there is an analogue for tensors as well.
 The rank of a matrix $M$ can be defined as the smallest $r$ for which $M$ can be written as a sum of $r$ matrices of rank $1$.
 A rank-$1$ matrix is just a matrix of the form $\vecu \vecv^T$ where the $(i,j)$-th entry is $u_iv_j$.
-We shall abuse\footnote{it is abuse because it is really a tensor product of $\vecu$ and $\vecv^T$.}
+We shall abuse\footnote{It is abuse because it is really a tensor product of $\vecu$ and $\vecv^T$.}
 notation and use $\vecu \otimes \vecv$ to denote the order-$2$ tensor $T$ where $T[i,j] = u_i v_j$.
-This naturally generalizes to higher order as well.
+This naturally generalizes to higher orders as well.
 
 \begin{definition}[Elementary tensors, and tensor rank]
   For $\vecv_1\in V_1, \ldots, \vecv_d \in V_d$, define the tensor $\vecv_1 \otimes \cdots \otimes \vecv_d$ to be the tensor $E$ given by
@@ -146,7 +146,7 @@ Then, $\rank(T) \leq n^{d-1}$.
 \end{lemma}
 \begin{proof}
   Let us revisit the case when $d=2$, where we know an $n\times n$ matrix has rank at most $n$.
-Interpreting this statement via \eqref{eqn:tensor-to-prod-univariates}, this implies that of $q(x_1,x_2)$ is a bi-variate with degree in each variable bounded by $n$, then $q$ can be written as
+Interpreting this statement via \eqref{eqn:tensor-to-prod-univariates}, this implies that if $q(x_1,x_2)$ is bi-variate with degree in each variable bounded by $n$, then $q$ can be written as
 \[
 q(x_1,x_2) = \sum_{i=1}^n g_i(x_1) h_i(x_2).
 \]
@@ -176,7 +176,7 @@ Raz's \cite{raz10} showed that in certain regimes, an answer to the above questi
 
 From this section onwards, we shall assume the \emph{set-multilinear polynomial} interpretation of a tensor $T:[n]^d \rightarrow \F$ as described in~\eqref{eqn:tensor-sml}.
 Hence our variables $\vecx$ is partitioned as $\vecx = \vecx_1 \sqcup \cdots \sqcup \vecx_d$ with $\abs{\vecx_i} = n$ for all $i\in [d]$.
-The main motivating question would be the following:
+The main motivating question will be the following:
 \begin{quote}
 If $f$ is a set-multilinear polynomial that is computed by a small formula, what can one say about its tensor rank?
 \end{quote}
@@ -236,7 +236,7 @@ We shall now prove \autoref{thm:raz-tensorrank-sml}. The proof described here is
 
 
 
-For this we would need the slightly better depth reduction for homogeneous formulas (\autoref{thm:av-formulas}) of Saptharishi and Vinay \cite{saptharishivinay14}. We recall the statement here.
+For this we will need the slightly better depth reduction for homogeneous formulas (\autoref{thm:av-formulas}) of Saptharishi and Vinay \cite{saptharishivinay14}. We recall the statement here.
 \begin{theorem*}[\autoref{thm:av-formulas}]
 Let $f$ be a homogeneous $n$-variate degree $d$ polynomial computed by a size $s$ homogeneous formula. 
 Then for any $0< t \leq d$, $f$ can be equivalently computed by a homogeneous $\Sigma\Pi^{[a]}\Sigma\Pi^{[t]}$ formula of top fan-in $s^{10(d/t)}$ where 
@@ -254,7 +254,7 @@ where $s' \leq s^{10(d/t)} = n^{10c(d/t)}$ and each $T_i = Q_{i1} \cdots Q_{ia_i
 \rank(T) & \leq n^{d_1 - 1} \cdots n^{d_a - 1}\\
  & =  n^{d - a}\\
 \implies \rank(f) & \leq s' \cdot n^{d-a} & \text{(~\autoref{lem:tensor-subadditivity})}\\
- & =  \pfrac{n^d}{n^{a - 10c(d/t)}}
+ & =  \pfrac{n^d}{n^{a - 10c(d/t)}}.
 \end{align*}
 Let us focus on the exponent of $n$ in the denominator. Using the lower bound on $a$ from \autoref{thm:av-formulas}, we get
 \begin{align*}
@@ -274,7 +274,7 @@ The proof would proceed in two steps, both of which are quite interested in thei
 \setlength\itemsep{0em}
 \item {\bf Homogenization :} In the first step, we shall convert a
   formula that compute a homogeneous polynomial of degree $d$ in $n$ variables to a n homogeneous formula computing the same polynomial.
-It would turn out that if $d = O(\log n)$, then this transformation only incurs a $\poly(n)$ blow-up in the size.
+It will turn out that if $d = O(\log n)$, then this transformation only incurs a $\poly(n)$ blow-up in the size.
 \item {\bf Set multilinearization :} In the second step, we show that
   for any homogeneous arithmetic formula that computes a set multilinear polynomial of degree $d$ in $n$ variables can be converted to a set-multilinear formula computing the same polynomial.
 In this setting, if $d \leq O(\log n/\log \log n)$, the blow-up in the size of the formula will only be $\poly(n)$.
@@ -287,16 +287,17 @@ In this setting, if $d \leq O(\log n/\log \log n)$, the blow-up in the size of t
 In particular, if $d = O(\log n)$ and $n = \poly(n)$ then we have $\mathrm{size}(\Phi') = \poly(n)$ as well. 
 \end{lemma}
 \begin{proof}
-Recall that due to the depth reduction result of Brent and Spira (\autoref{lem:formula-depth-reduction}), we can assume without loss of generality that the fan-in of every gate in $\Phi$ at most $2$ and the depth of $\Phi$ is $O(\log s)$.
-The construction of the new formula $\Phi'$ would have no surprises -- homogenize the formula $\Phi$ to obtain a circuit $C$ using the standard homogenization (\autoref{lem:homogenization}), and unravel the circuit to make it a formula in the most natural way. It is the analysis of the size that would give the lemma. 
+Recall that due to the depth reduction result of Brent and Spira (\autoref{lem:formula-depth-reduction}), we can assume
+without loss of generality that the fan-in of every gate in $\Phi$ is at most $2$ and the depth of $\Phi$ is $O(\log s)$.
+The construction of the new formula $\Phi'$ will have no surprises -- homogenize the formula $\Phi$ to obtain a circuit $C$ using the standard homogenization (\autoref{lem:homogenization}), and unravel the circuit to make it a formula in the most natural way. It is the analysis of the size that will give the lemma.
 
 \medskip
 
 For every gate $v$ in $\Phi$, we have $d+1$ gates $(v, 0), (v, 2), \ldots, (v, d)$ in $C$.
 Semantically, the polynomial computed at such a gate $(v, i)$ is the degree-$i$ homogeneous component of the polynomial computed at $v$ in $\Phi$. As in \autoref{lem:homogenization}, we shall connect these edges as follows:
 \begin{eqnarray*}
-v = u+w\quad\implies\quad (v, i) &=& (u, i) \spaced{+} (w,i)\quad\text{for all $i$}\\
-v = u\times w\quad\implies\quad (v, i) &=& \sum_{j=0}^i (u,j)\cdot (w, {i-j}) \quad\text{for all $i$}
+v = u+w\quad\implies\quad (v, i) &=& (u, i) \spaced{+} (w,i)\quad\text{for all $i$,}\\
+v = u\times w\quad\implies\quad (v, i) &=& \sum_{j=0}^i (u,j)\cdot (w, {i-j}) \quad\text{for all $i$.}
 \end{eqnarray*}
 Hence, we now have a homogeneous circuit $C$ that computes $f$ and has size at most $s' = O(sd^2)$. Furthermore, the depth of this circuit is at most twice the depth of the formula $\Phi$ which was $O(\log s)$. Hence $C$ is a homogeneous circuit of depth $O(\log s)$ and size $O(sd^2)$ computing $f$. 
 
@@ -319,7 +320,7 @@ We know that the circuit has depth at most $O(\log s)$ and hence $r \leq O(\log 
 Therefore, the number of paths from any $(v,i)$ to the root is at most $\binom{d + O(\log s)}{d}$.
 Hence, if $\Phi'$ is the formula obtained by unravelling $C$, we have
 \[
-\mathrm{size}(\Phi') = \poly\inparen{s,\binom{d+\log s}{d}}\qedhere
+\mathrm{size}(\Phi') = \poly\inparen{s,\binom{d+\log s}{d}}.\qedhere
 \]
 \end{proof}
 
@@ -340,7 +341,7 @@ To this end, for every gate $v$ in $\Phi$, and vector $\veca = (a_1,\ldots, a_d)
 Semantically, the the polynomial at $(v,\veca)$ consists of the monomials in the polynomial computed at $v$ (in $\Phi$) which contain exactly one variable from the set $\vecx_i$ for every $i$ such that $a_i = 1$.
 The edges in $C$ are connected in a natural way, namely for a gate $v$ with children $u$ and $w$, we have the following edges:
 \begin{eqnarray*}
-\text{$v = u + w$}\quad\implies\quad (v, \veca) &=& (u, \veca) \spaced{+} (w, \veca)\quad\text{for all $\veca$}\\
+\text{$v = u + w$}\quad\implies\quad (v, \veca) &=& (u, \veca) \spaced{+} (w, \veca)\quad\text{for all $\veca$,}\\
 \text{$v = u \times w$}\quad\implies\quad (v, \veca) &=& \sum_{\vecb + \vecc = \veca} (u, \vecb)\cdot (w, \vecc) \quad\text{for all $\veca$}.
 \end{eqnarray*}
  
