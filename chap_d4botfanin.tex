@@ -6,13 +6,13 @@ This chapter shall address a recent technique for proving lower bounds for some 
 \begin{definition}
   A \emph{depth-$4$ circuit}, also referred to as a $\SPSP$ circuit, computes a polynomial of the form 
   $$
-  f \spaced{=} Q_{11}\dots Q_{1d} \spaced{+\;\cdots\;+}  Q_{s1}\dots Q_{sd}.
+  f \spaced{=} Q_{11}\cdots Q_{1d} \spaced{+\;\cdots\;+}  Q_{s1}\cdots Q_{sd}.
   $$
   The number of summands $s$ is called the \emph{top fan-in} of the circuit. 
 
   Further, a $\mySPSP{a}{b}$ circuit is a depth-$4$ circuit computing a polynomial of the form
   $$
-  f \spaced{=} Q_{11}\dots Q_{1a} \spaced{+\;\cdots\;+}  Q_{s1}\dots Q_{sa}\quad\text{where $\deg Q_{ij} \leq b$ for all $i,j$}.
+  f \spaced{=} Q_{11}\cdots Q_{1a} \spaced{+\;\cdots\;+}  Q_{s1}\cdots Q_{sa}\quad\text{where $\deg Q_{ij} \leq b$ for all $i,j$}.
   $$
 \end{definition}
 
@@ -41,7 +41,7 @@ This is exactly the problem studied by Kayal~\cite{k2}, which led to the complex
 The goal is to construct a measure $\Gamma$ such that $\Gamma(f)$ is small whenever $f$ is a power of a quadratic. 
 As a first attempt, let us look at the space of $k$-th order partial derivatives of $Q^d$ (for a suitable choice of $k$). 
 Unlike the case of $\Sigma\!\wedge\!\Sigma$-circuits where the the space of $k$-th order partial derivatives of $\ell^d$ had dimension $1$, the space of partial derivatives of $Q^{d}$ could be as large as it can be expected. 
-Nevertheless, the following simple observation would provide the key intuition.
+Nevertheless, the following simple observation will provide the key intuition.
 
 \begin{observation} 
   Any $k$-th order partial derivative of $Q^d$ is of the form $Q^{d-k}p$ where $p$ is a polynomial of degree at most $k$. 
@@ -89,7 +89,7 @@ Hence this measure $\CM{Kay}_{k,\ell}$ is certainly potentially useful for this 
 Very similar to the above lemma, one can also show the following upper bound for the \emph{building blocks} of $\mySPSP{a}{b}$ circuits. 
 
 \begin{lemma}
-Let $f = Q_1\dots Q_a$ with $\deg Q_i \leq b$ for all $i$. 
+Let $f = Q_1\cdots Q_a$ with $\deg Q_i \leq b$ for all $i$. 
 Then, 
 $$
 \CM{Kay}_{k,\ell}(f) \spaced{=} \dim \inparen{\SPD{k}{\ell}{f}} \spaced{\leq} \binom{a}{k}\binom{n + (b-1)k + \ell}{n}.
@@ -154,15 +154,15 @@ The vector space of polynomials we are interested is $\SPD{k}{\ell}{f}$, and if 
 \subsection{Shifted partials of the determinant and permanent}
 
 The first lower bound for $\mySPSP{\sqrt{d}}{\sqrt{d}}$ circuits was by Gupta, Kamath, Kayal and Saptharishi \cite{gkks13} for the determinant and the permanent polynomial. 
-We shall describe the lower bound for $\Det_n$, although it would carry over immediately to $\Perm_n$ as well. 
+We shall describe the lower bound for $\Det_n$, although it will carry over immediately to $\Perm_n$ as well. 
 As mentioned earlier, we wish to estimate the number of distinct leading monomials in $\SPD{k}{\ell}{\Det_n} = \mathrm{span}\inbrace{\vecx^{\leq \ell}\partial^{=k}\Det_n}$. \cite{gkks13} made a relaxation to merely count the number of distinct leading monomials among the generators $\inbrace{\vecx^{\leq \ell}\partial^{=k}\Det_n}$ instead of their span. \\
 
 The first observation is that any $k$-th order partial derivative of $\Det_n$ is just an $(n-k)\times (n-k)$ minor. 
 Let us fix a monomial ordering induced by the lexicographic ordering on the variables:
 $$
-x_{11} \succ x_{12} \dots \succ x_{1n} \succ x_{21} \succ \dots \succ x_{nn}.
+x_{11} \succ x_{12} \succ \dots \succ x_{1n} \succ x_{21} \succ \dots \succ x_{nn}.
 $$
-Under this ordering, the leading monomial of any minor is just the product of variables on the main diagonal of the sub-matrix corresponding to the minor, and hence is a term of the form $x_{i_1j_1}\dots x_{i_{(n-k)},j_{(n-k)}}$ where $i_1 < \dots < i_{n-k}$ and $j_1 < \dots < j_{n-k}$; let us call such a sequence of indices as an $(n-k)$-increasing sequences in $[n]\times [n]$. 
+Under this ordering, the leading monomial of any minor is just the product of variables on the main diagonal of the sub-matrix corresponding to the minor, and hence is a term of the form $x_{i_1j_1}\cdots x_{i_{(n-k)},j_{(n-k)}}$ where $i_1 < \dots < i_{n-k}$ and $j_1 < \dots < j_{n-k}$; let us call such a sequence of indices as an $(n-k)$-increasing sequences in $[n]\times [n]$. 
 Further, for any $(n-k)$-increasing sequence, there is a unique minor $M$ whose leading monomial is precisely the product of the variables indexed by the increasing sequence. 
 Therefore, the task of lower bounding distinct leading monomials in $\inbrace{\vecx^{\leq \ell}\partial^{=k}\Det_n}$ reduces to the following combinatorial problem.
 \begin{claim} For any $k,\ell > 0$,  we have
@@ -242,7 +242,7 @@ Any two monomials of $\mathrm{NW}_k$ intersect in less than $k$ variables.
 Hence, any $k$-th order partial derivative of $\mathrm{NW}_k(\vecx)$ is a monomial (which could possibly be zero). \qed
 \end{observation}
 
-Hence, the problem of lower bounding the shifted partials of $\mathrm{NW}_k$ reduces to the problem of counting distinct monomials of degree $\ell + d-k$ that are divisible by one of these $k$-th order derivatives. \cite{KSS13} additionally used the observation that two random $k$-th order partial derivatives of $\mathrm{NW}_k$ are monomials that are \emph{far} from each other. 
+Now, the problem of lower bounding the shifted partials of $\mathrm{NW}_k$ reduces to the problem of counting distinct monomials of degree $\ell + d-k$ that are divisible by one of these $k$-th order derivatives. \cite{KSS13} additionally used the observation that two random $k$-th order partial derivatives of $\mathrm{NW}_k$ are monomials that are \emph{far} from each other. 
 Using this, they estimate the number of distinct shifts of these monomials and showed that the dimension of shifted partial derivatives of $\mathrm{NW}_k$ is very close to the trivial upper bound as in \autoref{clm:spd-ratio}. 
 We sketch the argument by Chillara and Mukhopadhyay \cite{cm14}. 
 Formally, for any two multilinear monomials $m_1$ and $m_2$, let the $\Delta(m_1,m_2)$ denote $\min\inbrace{|m_1| - |m_1\intersection m_2|, m_2 - |m_1 \intersection m_2|}$ (abusing notation by identifying the multilinear monomials with the set of variables that divide it). 
@@ -272,7 +272,7 @@ Since we have $n^k$ monomials of pairwise distance at least $n/2$, the above lem
 Let $k = \epsilon \sqrt{d}$ for some constant $\epsilon > 0$. 
 Then for any  $\ell = \Theta\inparen{\frac{n^2 \sqrt{n}}{\log n}}$,
 $$
-\dim\inparen{\SPD{k}{\ell}{\mathrm{NW}_k}} \spaced{\geq} \frac{n^k}{2} \cdot \binom{n^2 + \ell}{n^2}
+\dim\inparen{\SPD{k}{\ell}{\mathrm{NW}_k}} \spaced{\geq} \frac{n^k}{2} \cdot \binom{n^2 + \ell}{n^2}.
 $$
 \end{theorem}
 \begin{proof-sketch}
