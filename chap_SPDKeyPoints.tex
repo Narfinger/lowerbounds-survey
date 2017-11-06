@@ -1,19 +1,19 @@
 \chapter{Quick summary of key points}
 
-The chapters that follow would delve deeper to show more general models where variants of shifted or projected shifted partial derivatives can be used to prove lower bounds.
-A lot of the lower bounds would use specific observation or tricks used in the proofs in \autoref{chap:d4-bottomfanin} and \autoref{chap:d4hom}. 
+The chapters that follow will delve deeper to show more general models where variants of shifted or projected shifted partial derivatives can be used to prove lower bounds.
+A lot of the lower bounds will use specific observation or tricks used in the proofs in \autoref{chap:d4-bottomfanin} and \autoref{chap:d4hom}. 
 
 \mdfsetup{%
 roundcorner=5pt
 }
 \begin{quote}
 \begin{mdframed}
-{\bf Note to reader:} All these lower bounds would involve a delicate play between the various parameters involved. In order to completely understand, it is \emph{imperative} that you work out the calculations in \autoref{chap:d4-bottomfanin} and \autoref{chap:d4hom} (specifically those in \autoref{sec:KS-leading-monomial-approach}) at least once completely. Doing that would give some sense of how the different parameters interact and this is crucial to a lot of the lower bounds that follow. 
+{\bf Note to reader:} All these lower bounds will involve a delicate play between the various parameters involved. In order to completely understand, it is \emph{imperative} that you work out the calculations in \autoref{chap:d4-bottomfanin} and \autoref{chap:d4hom} (specifically those in \autoref{sec:KS-leading-monomial-approach}) at least once completely. Doing that would give some sense of how the different parameters interact and this is crucial to a lot of the lower bounds that follow. 
 \end{mdframed}
 \end{quote}
 
 Having said that, this chapter shall be devoted to restating the most important points to remember from the previous two chapters.
-These would be enough to get a high-level view of the lower bounds that follow but one has to get their hands dirty somewhere to completely understand these.
+These will be enough to get a high-level view of the lower bounds that follow but one has to get their hands dirty somewhere to completely understand these.
 
 \section{Shifted Partial Derivatives}
 
@@ -53,7 +53,7 @@ This measure is used to prove lower bounds for the top fan-in of depth four circ
 \begin{lemma*}[Upper bound for hom. $\SPSP^{[t]}$ circuits, restating \autoref{cor:dimSPD-upper-bound}]
 Let $f$ be an $n$-variate degree $d$ polynomial of the form $f = Q_1 \cdots Q_a$ with $\deg(Q_i) \leq t$. Then for any $k,\ell$, we have
 \[
-\CM{SPD}_{k,\ell}(f) \spaced{\leq} \binom{a}{k} \cdot \binom{n + \ell + k(t-1)}{n}
+\CM{SPD}_{k,\ell}(f) \spaced{\leq} \binom{a}{k} \cdot \binom{n + \ell + k(t-1)}{n}.
 \]
 \end{lemma*}
 
@@ -68,7 +68,7 @@ Let $H(Q_1,\ldots, Q_a)$ be an arbitrary polynomial function applied to $Q_1,\ld
 \]
 \end{exercise}
 
-The above lemma is a special case of the above more general exercise. 
+The lemma is a special case of the above general exercise. 
 
 The second part of the lower bound is to show that the measure is large for explicit polynomials. The Nisan-Wigderson polynomial, $\NW_{d,m,e}$, is designed so that the measure is almost as large as possible. The iterated matrix multiplication polynomial, $\IMM$, also has a large value of $\CM{SPD}_{k,\ell}$, though not as large as the value for $\NW$. For the right range of parameters, 
 \[
@@ -147,9 +147,9 @@ Therefore, we have
 and the RHS is a low bottom degree product. Thus similar to the upper bound for shifted partial derivatives, bearing in mind that we only care about multilinear monomials, one can easily show the following.
 
 \begin{lemma*}[Upper bound for low bottom support size circuits, \autoref{lem:upper-bound-low-supp}]
-Let $f = Q_1\cdots Q_a$ be an $n$-variate degree $d$ polynomial with each $Q_i$ a sum of monomials depending on at most $r$ variables. Then for any $k,\ell$ with $\ell + kr\leq \frac{n}{2}$, 
+Let $f = Q_1\cdots Q_a$ be an $n$-variate degree $d$ polynomial with each $Q_i$ being a sum of monomials depending on at most $r$ variables. Then for any $k,\ell$ with $\ell + kr\leq \frac{n}{2}$, 
 \[
-\CM{PSD}_{k,\ell}(f) \spaced{\leq} \binom{(2d/r) + k}{k} \cdot \binom{n}{\ell + kr}
+\CM{PSD}_{k,\ell}(f) \spaced{\leq} \binom{(2d/r) + k}{k} \cdot \binom{n}{\ell + kr}.
 \]
 \end{lemma*}
 
@@ -161,7 +161,7 @@ For a very delicate range of parameters, we have a very similar behaviour of the
 
 In the right range of parameters, this gives an $n^{\Omega(d/t)}$ lower bound on the top fan-in of any homogeneous depth four circuit of bottom support size bounded by $t$ that computes $\NW$ or $\IMM$. 
 
-The calculations involved are quite delicate but it would be useful to just keep the case of $\NW$ in mind as the full calculations were described in \autoref{sec:KS-leading-monomial-approach}. But a couple of thing to keep in mind is that the calculations for $\NW_{d,m,e}$ work over any field but as long as $m^e$ roughly equal to $2^d$ (the precise constraints are explicit described in \autoref{sec:KS-leading-monomial-approach}). \\
+The calculations involved are quite delicate but it will be useful to just keep the case of $\NW$ in mind as the full calculations were described in \autoref{sec:KS-leading-monomial-approach}. But a couple of thing to keep in mind is that the calculations for $\NW_{d,m,e}$ work over any field but as long as $m^e$ roughly equal to $2^d$ (the precise constraints are explicit described in \autoref{sec:KS-leading-monomial-approach}). \\
 
 So far, this only addresses depth four circuits of small bottom support size. In order to reduce the general setting of homogeneous depth four circuits to this case, there is one additional trick employed. 
 
@@ -180,7 +180,7 @@ This however complicates the other side of the argument where we now need to fin
 Let $\rho$ be a random restriction that sets each variable to zero independently with probability $1 - \alpha$. 
 For any polynomial $P(x_1,\dots x_n)$, define $P \circ \mathrm{Lin}_\alpha$ as
 \[
-P \circ \mathrm{Lin}_\alpha \spaced{=} P\inparen{\sum_{i=1}^t y_{1i}, \ldots, \sum_{i=1}^t y_{nt}}\quad \text{where $t = \inparen{\frac{1}{\alpha}} n \log n$}
+P \circ \mathrm{Lin}_\alpha \spaced{=} P\inparen{\sum_{i=1}^t y_{1i}, \ldots, \sum_{i=1}^t y_{nt}}\quad \text{where $t = \inparen{\frac{1}{\alpha}} n \log n$}.
 \]
 Then, $\rho(f \circ \mathrm{Lin}_\alpha)$ has $f$ as a projection with probability $1 - 1/2^{n}$. 
 \end{lemma*}
@@ -189,7 +189,7 @@ Basically, we replace each variable in $\NW$ by a sum of $t$ new distinct variab
 
 Therefore, if we assume on the contrary that $C$ is a homogeneous depth four circuit of size $n^{(0.1)\sqrt{d}}$ computing $\NW_{d,m,e} \circ \mathrm{Lin}_\alpha$, then there is a homogeneous circuit $C'$ with size at most $n^{(0.1)\sqrt{d}}$ and bottom support size at most $\sqrt{d}$ that computes $\NW_{d,m,e}$. But since we already have a lower bound for homogeneous depth four circuits of low bottom support size computing $\NW_{d,m,e}$, we get a contradiction. \\
 
-Hopefully this would give the readers a rough description of the main observations. But to really understand them, one \emph{has} to work out the calculations in \autoref{sec:KS-leading-monomial-approach} at least once to get a better grip of how these parameters interact. We now move on to some other models for which projected shifted partials, or variants of it, can again be employed. 
+Hopefully this will give the readers a rough description of the main observations. But to really understand them, one \emph{has} to work out the calculations in \autoref{sec:KS-leading-monomial-approach} at least once to get a better grip of how these parameters interact. We now move on to some other models for which projected shifted partials, or variants of it, can again be employed. 
 
 
 %%% Local Variables:
